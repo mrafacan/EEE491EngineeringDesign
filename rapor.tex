@@ -16,8 +16,8 @@
 \usepackage{lipsum}
 \usepackage{blindtext}
 \usepackage{float}
+\usepackage{nameref}
 \setmarginsrb{3 cm}{0.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
-
 \title{EEE 491 Engineering Design I}							
 \date{\today}											
 
@@ -40,7 +40,7 @@
 	\begin{titlepage}
 		\centering
 		\vspace*{0.5 cm}
-		\includegraphics[scale = 2]{images/gazi.png}\\[1.0 cm]	
+		\includegraphics[scale = 0.75]{images/gazi.png}\\[1.0 cm]	
 		\textsc{\LARGE Gazi University}\\[0.5 cm]
 		\textsc{\LARGE Faculty of Engineering}\\[0.5 cm]
 		\textsc{\LARGE Electrical Electronics Engineering}\\[1 cm]
@@ -81,10 +81,18 @@
 	\pagebreak
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\begin{center}
-		\textbf{\large{Summary}}
-	\end{center}
+	\pagenumbering{Roman} % İçindekilerin Roma rakamlarıyla başlaması için
+	
+	
+	\renewcommand{\abstractname}{Summary}
+	\begin{abstract}
+		\addcontentsline{toc}{section}{Summary}		
+		Bu bir özet metnidir. Buraya belgenizin ana hatları hakkında kısa bir özet yazabilirsiniz.
+	\end{abstract}
+	
 
+\clearpage % Yeni bir sayfa başlatmak için
+\pagenumbering{arabic}
 	\section{Introduction}
 Encryption is crucial in the digital world because it ensures that sensitive information remains secure and private. It involves encoding data in a way that only authorized parties can access and understand it. Without encryption, data such as personal information, financial details, passwords, and communications would be vulnerable to unauthorized access, theft, or manipulation by cybercriminals or malicious entities.
 
@@ -131,18 +139,51 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
 		\subsubsection{Economical}
 		\subsubsection{Manufacturability}
 		\subsubsection{Social}
-  		Our project is subject to various social constraints such as respect for privacy, user consent, ethical use and security measures. The technologies used in the project must comply with legal regulations, and the transparent processing and protection of user data must be prioritized. User awareness should be raised through educational materials and community engagement, the potential social impact of the project should be assessed and environmental impact should be considered.
+  		Our project is subject to various social constraints such as respect for privacy, user consent, ethical use and security measures. The technologies used in the project must comply with legal regulations, and the transparent processing and protection of user data must be prioritized. User awareness should be raised through educational materials and community engagement.
 	\subsection{Certifications and/or Standards}
 	
 	\section{Concept Generation and Evaluation}
 	
 	\subsection{Level 0 Design:}
+	\begin{figure}[h]
+		\centering
+		\label{Level 0 Design of System }
+		\includegraphics[scale = 0.15]{images/level0design.jpg}\\[0.5 cm]	
+		\caption{Level 0 Design of System } 		
+	\end{figure}
+	\begin{table}[h]
+		\centering
+		
+		\label{Properties Of Level 0 Design }
+		\begin{tabular}{|c|c|}
+			\hline
+			Module & ElGamal Encryption/Decryption System \\ \hline
+			\multirow{2}{*}{Inputs} & Power 3.3V DC \\ \cline{2-2}
+			& User Input (Message) \\ \hline
+			Output & Decrypted Message \\ \hline
+			Functionality & Encrypting given input and  decrypting encrypted input \\ \hline
+		
+		\end{tabular}
+		\caption{Properties of Level 0 Design }
+	\end{table}
 	
-	\subsection{Level 1 Design:}
-	
+	\subsection{Level 1 Design}
+	\begin{figure}[h]
+		\centering
+		\label{Level 1 Design of System }
+		\includegraphics[scale = 0.25]{images/level1design.jpg}\\[0.5 cm]	
+		\caption{Level 1 Design of System } 		
+	\end{figure}
 	\subsection{Demonstration of how behavioral models}
 	\subsubsection{UML Design}
  	The general UML diagram of our software is shown in the figure and it shows that. First, a public key is generated on the decryption card for encryption and this key is sent to the encryption card. Then, on the encryption card, the user's message is converted into a numeric value and encrypted with the public key of the decryption card and the encrypted message is sent to the decryption card. The encrypted message is decrypted with the decryption card's own private key and the original message is obtained on the decryption card.
+ 	
+ 	\begin{figure}[h]
+ 		\centering
+ 		\label{Uml Diagram Of The System}
+ 		\includegraphics[scale = 0.25]{images/umldiagram.jpg}\\[0.5 cm]	
+ 		\caption{Uml Diagram Of The System} 		
+ 	\end{figure}
 	\section{Conclusions}
 	
 	\section{References}

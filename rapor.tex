@@ -105,11 +105,11 @@ Overall, in today's digital era marked by increased connectivity and data sharin
 Additionally, in the realm of modern cryptography, various encryption methods are employed to ensure secure communication and data protection. These include well-established techniques like RSA and AES, along with innovative approaches such as Elliptic Curve Cryptography (ECC) for resource-constrained environments and Homomorphic Encryption for secure computation on encrypted data. ElGamal encryption, noted for its secure key exchange abilities, stands among these methods as a key player in ensuring the confidentiality and integrity of sensitive information in our increasingly digital world.
 
 \vskip 20cm
-	\section{Problem statement/Needs Identification}
+	\section{Needs Identification}
 	In today's interconnected digital world, secure communication stands as a fundamental necessity to safeguard sensitive information. However, ensuring data privacy during transmission across networks remains a significant challenge. The ElGamal encryption system, known for its robust security features based on the difficulty of discrete logarithm problem, presents an opportunity to establish secure communication channels.
 		
 	The primary objective involves designing an ElGamal-based system that enables the exchange of encrypted messages between two development board over an insecure communication channel. This system aims to ensure the confidentiality, integrity, and authenticity of the transmitted data. The project will delve into the intricacies of ElGamal's encryption and decryption processes within the context of development board communication.
-	\section{Research/Technology Survey and/or Background information}
+	\section{Research Survey and Background information}
 	
 	\section{Requirements Specifications}
 		
@@ -135,13 +135,44 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
 	\end{enumerate}
 	\subsection{Constraints}
 		\subsubsection{Sustainability}
+		In developing the ElGamal encryption project, sustainability stands as a core consideration. It encompasses both environmental and social aspects. The choice of materials and components should lean towards environmentally friendly options, aiming to minimize the project's ecological footprint. Additionally, practices adhering to ethical manufacturing standards and considerations for social impact are vital. Designing for longevity, recyclability, and energy efficiency are pivotal factors that align with sustainability goals. By prioritizing sustainable practices, this project not only contributes positively to the environment but also sets a precedent for responsible technological advancement.
 		\subsubsection{Environmental}
+		Our primary goal in this encryption project is to mitigate collateral damage associated with vulnerability that can affect environment. While encryption is essential for data security, it can inadvertently lead to collateral risks such as vulnerabilities or access limitations. Our focus is mitigate any potential adverse effects that might arise as collateral damage.
 		\subsubsection{Economical}
+		The ElGamal encryption implementation requires the use of cost-effective components crucial for encryption and communication purposes. This economic analysis aims to outline the cost estimates associated with these components, emphasizing the utilization of budget-friendly options.
+		
+		Cost Breakdown:
+		
+		Development Board A:
+		
+		Cost per board: 125
+		Total cost for two boards: 250
+		Development Board B:
+		
+		Cost per board: 50
+		Total cost for two boards: 100
+		WiFi Modules:
+		
+		Development Board B includes WiFi functionality; hence, no additional modules might be necessary.
+		Additional Costs:
+		
+		Miscellaneous expenses (e.g., power supplies, connectors, development tools): To be determined (if any).
+		Total Projected Cost:
+		
+		Total Cost = Cost of Development Board A + Cost of Development Board B + Additional Costs
+		Total Cost = 250 + 100 + Additional Costs
+		
+		Projected Timeline:
+		Consideration of the procurement timeline for the components and the development phases will impact the overall cost.
+		
+		Conclusion:
+		The ElGamal encryption project's economic aspect estimates a total cost of 350 for the development boards. Emphasis on utilizing budget-friendly components is highlighted for an economical solution. Further detailing of any additional expenses is recommended for a comprehensive economic evaluation.
 		\subsubsection{Manufacturability}
+		The success of this project is heavily reliant on manufacturability. The accessibility, cost, and ease of assembly of materials and components used in the production process are crucial factors. Throughout the project, attention should be given to the availability of preferred components and their ease of integration into the manufacturing stages. Additionally, simplifying or optimizing the design may be necessary to enhance efficiency and quality during production. Early-stage analyses and design modifications concerning manufacturability can minimize issues during the manufacturing process, facilitating a successful commercialization of the project.
 		\subsubsection{Social}
   		Our project is subject to various social constraints such as respect for privacy, user consent, ethical use and security measures. The technologies used in the project must comply with legal regulations, and the transparent processing and protection of user data must be prioritized. User awareness should be raised through educational materials and community engagement.
 	\subsection{Certifications and/or Standards}
-	
+	In our pursuit of developing a robust ElGamal encryption solution, we are dedicated to integrating industry-established standards into our hardware and embedded software development practices. The incorporation of IEEE 1413 for hardware description languages and IEEE/ISO/IEC 14764 for software engineering processes serves as the cornerstone of our commitment. IEEE 1413 guides our hardware design methodologies, ensuring consistency and efficiency in utilizing hardware description languages for electronic systems. Simultaneously, IEEE/ISO/IEC 14764 shapes our software engineering processes, emphasizing meticulous software maintenance, management, and configuration control practices throughout the lifecycle. By adhering to these standards, we aim to fortify the reliability, compatibility, and sustainability of our ElGamal encryption project, assuring a high-quality, industry-aligned solution.
 	\section{Concept Generation and Evaluation}
 	
 	\subsection{Level 0 Design:}
@@ -174,6 +205,74 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
 		\includegraphics[scale = 0.25]{images/level1design.jpg}\\[0.5 cm]	
 		\caption{Level 1 Design of System } 		
 	\end{figure}
+\begin{table}[h]
+	\centering
+	
+	\label{Properties of Encryption Card}
+	\begin{tabular}{|c|c|}
+		\hline
+		Module & Encryption Card \\ \hline
+		\multirow{3}{*}{Inputs} & Power 3.3V DC \\
+		\cline{2-2}
+		& User Input (Message) \\
+		\cline{2-2}
+		& Public Key \\ \hline
+		Output & Encrypted Message \\ \hline
+		Functionality & Encrypting given input.\\ \hline		
+	\end{tabular}
+	\caption{Properties of Encryption Card}
+\end{table}
+
+\begin{table}[h]
+	\centering	
+	\label{Properties of Decryption Card }
+	\begin{tabular}{|c|c|}
+	\hline
+	Module & Decryption Card\\ \hline
+		\multirow{2}{*}{Inputs} & Power 3.3V DC \\ \cline{2-2}
+	& Encrypted Message \\ \hline
+		\multirow{2}{*}{Outputs} & Public Key \\ \cline{2-2}
+	& Decrypted Message \\ \hline
+	Functionality & Decrypting given input.\\ \hline	
+		
+	\end{tabular}
+	\caption{Properties of Decryption Card}
+\end{table}
+	\begin{table}[h]
+		\centering		
+		\label{Properties of Access Point }
+		\begin{tabular}{|c|c|}
+			\hline
+			Module & Access Point \\ \hline
+			\multirow{5}{*}{Inputs} & Power 3.3V DC \\
+			\cline{2-2}
+			& User Input (Message) \\
+			\cline{2-2}
+				& Encrypted Message \\
+			\cline{2-2}
+				& Decrypted Message \\
+			\cline{2-2}
+				& Public Key \\
+			\cline{2-2} \hline
+			
+				\multirow{4}{*}{Outputs} & Message\\
+			\cline{2-2}
+			& Public Key \\
+			\cline{2-2}
+			& Encrypted Message \\
+			\cline{2-2}
+			& Decrypted Message \\
+			\cline{2-2} \hline
+			
+			Functionality & Access Point.\\ \hline	
+			
+		\end{tabular}
+		\caption{Properties of Access Point}
+	\end{table}
+
+
+
+\vskip 10cm
 	\subsection{Demonstration of how behavioral models}
 	\subsubsection{UML Design}
  	The general UML diagram of our software is shown in the figure and it shows that. First, a public key is generated on the decryption card for encryption and this key is sent to the encryption card. Then, on the encryption card, the user's message is converted into a numeric value and encrypted with the public key of the decryption card and the encrypted message is sent to the decryption card. The encrypted message is decrypted with the decryption card's own private key and the original message is obtained on the decryption card.

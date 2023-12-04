@@ -87,7 +87,14 @@
 	\renewcommand{\abstractname}{Summary}
 	\begin{abstract}
 		\addcontentsline{toc}{section}{Summary}		
-		Bu bir özet metnidir. Buraya belgenizin ana hatları hakkında kısa bir özet yazabilirsiniz.
+		Data security is very important in today's world. As a result of many malicious attempts, the need to ensure the security of digital data has arisen. In this context, there are many encryption methods to protect and secure digital data. In this project, ElGamal encryption method was used for the security of data exchange.
+		
+		The aim of our project is to ensure software security and prevent malicious attempts by using the ElGamal encryption method during data transfer.
+		
+		The software we want to create within the scope of this project; The message sent by the sender must be transmitted by the wi-fi module to our encryption development card, and then the sent message must be encrypted by the encryption development card using the ElGamal encryption method. This encrypted message must then be transmitted to the wi-fi module and directed to our decryption development card so that the text can be delivered deciphered to the recipient. The encrypted message deciphered on this card is transmitted back to the wi-fi module. Then, the deciphered message is transmitted to the recipient via this module, ensuring secure communication.
+		
+		In this way, data security will be ensured and one of the problems that has a large share in today's digitalizing world will be prevented.
+		
 	\end{abstract}
 	
 
@@ -106,10 +113,51 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
 
 \vskip 20cm
 	\section{Needs Identification}
-	In today's interconnected digital world, secure communication stands as a fundamental necessity to safeguard sensitive information. However, ensuring data privacy during transmission across networks remains a significant challenge. The ElGamal encryption system, known for its robust security features based on the difficulty of discrete logarithm problem, presents an opportunity to establish secure communication channels.
-		
-	The primary objective involves designing an ElGamal-based system that enables the exchange of encrypted messages between two development board over an insecure communication channel. This system aims to ensure the confidentiality, integrity, and authenticity of the transmitted data. The project will delve into the intricacies of ElGamal's encryption and decryption processes within the context of development board communication.
+It is essential to identify the requirements concerning two development boards intended for El Gamal encryption. These boards should be designed as a pair, one dedicated to encryption and the other for decrypting the encrypted data.
+
+
+The design of the two development boards intended for El Gamal encryption must facilitate encryption and decryption processes to ensure data security in communication. These boards should possess reliable and effective capabilities for data encryption and decryption. Moreover, they should encompass algorithms and processes necessary to ensure data integrity and security.
+
+
+This project entails the design and development of two dedicated boards. The primary goal is to create systems capable of effectively performing El Gamal encryption, enabling one board to perform encryption and the other to decipher the encrypted data, thereby ensuring secure communication. These boards should operate in compliance with industry standards to ensure data security and confidentiality.
+
+
 	\section{Research Survey and Background information}
+		
+		ElGamal Encryption: ElGamal is a public-key(asymmetric) cryptosystem based on the mathematical properties of modular exponentiation and the difficulty of certain mathematical problems. It involves key generation, encryption, and decryption processes.
+		How It's Currently Being Done:
+		
+		Key Generation: Each card generates its own public and private key pair.
+		Encryption: Card A encrypts a message using Card B's public key and random integer number.
+		
+		Decryption: Card B decrypts the received message using its private key.
+		Limitations of Current Designs or Technology:
+		
+		Computational Intensity: ElGamal encryption can be computationally intensive, which might be a limitation for resource-constrained devices.
+		
+		Key Size: To ensure security, ElGamal often requires larger key sizes, potentially impacting communication efficiency.
+		
+		Vulnerability to Quantum Attacks: ElGamal, like many public-key systems, is vulnerable to attacks leveraging quantum computers.
+		
+		
+		In an article published by Omar A. Imran in 2019 they focused on speech signal encryption/decryption.
+		
+		 The referenced article primarily focuses on employing El-Gamal encryption for speech signal encryption and decryption. In contrast, our project concentrates on the development of dual-board systems specifically for El-Gamal encryption, with specific data type which is text.
+	 
+		The differences of our project from the mentioned model are as follows:
+		
+		Dual-Board Encryption System: Unlike some existing projects that might focus on single-board encryption, our project distinctly involves the development of a dual-board system specifically designed for El Gamal encryption. This two-board setup, with one dedicated to encryption and the other for decryption, is a unique aspect of our project.
+		
+		
+		The similarities of our project with the mentioned article are as follows:
+		
+		Focus on Data Security: Similar to several existing projects, our project shares a fundamental focus on ensuring data security. Encryption and decryption processes aim to safeguard transmitted data from unauthorized access.
+			
+		Utilization of El-Gamal Algorithm: Both the referenced article and our project utilize the El-Gamal algorithm for encryption purposes, acknowledging its strength in public key cryptography.
+		
+
+		
+	
 	
 	\section{Requirements Specifications}
 		
@@ -135,40 +183,15 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
 	\end{enumerate}
 	\subsection{Constraints}
 		\subsubsection{Sustainability}
-		In developing the ElGamal encryption project, sustainability stands as a core consideration. It encompasses both environmental and social aspects. The choice of materials and components should lean towards environmentally friendly options, aiming to minimize the project's ecological footprint. Additionally, practices adhering to ethical manufacturing standards and considerations for social impact are vital. Designing for longevity, recyclability, and energy efficiency are pivotal factors that align with sustainability goals. By prioritizing sustainable practices, this project not only contributes positively to the environment but also sets a precedent for responsible technological advancement.
+		ElGamal Encryption may involve complex mathematical operations, and the algorithms used for encryption and decryption can consume significant computational resources. It's important to consider the sustainability of the system in terms of energy efficiency, especially if it is deployed in resource-constrained environments.
 		\subsubsection{Environmental}
-		Our primary goal in this encryption project is to mitigate collateral damage associated with vulnerability that can affect environment. While encryption is essential for data security, it can inadvertently lead to collateral risks such as vulnerabilities or access limitations. Our focus is mitigate any potential adverse effects that might arise as collateral damage.
+		Our environmental goal in this encryption project is to mitigate collateral damage associated with vulnerability that can affect environment. While encryption is essential for data security, it can inadvertently lead to collateral risks such as vulnerabilities or access limitations. Our focus is mitigate any potential adverse effects that might arise as collateral damage.
 		\subsubsection{Economical}
 		The ElGamal encryption implementation requires the use of cost-effective components crucial for encryption and communication purposes. This economic analysis aims to outline the cost estimates associated with these components, emphasizing the utilization of budget-friendly options.
-		
-		Cost Breakdown:
-		
-		Development Board A:
-		
-		Cost per board: 125
-		Total cost for two boards: 250
-		Development Board B:
-		
-		Cost per board: 50
-		Total cost for two boards: 100
-		WiFi Modules:
-		
-		Development Board B includes WiFi functionality; hence, no additional modules might be necessary.
-		Additional Costs:
-		
-		Miscellaneous expenses (e.g., power supplies, connectors, development tools): To be determined (if any).
-		Total Projected Cost:
-		
-		Total Cost = Cost of Development Board A + Cost of Development Board B + Additional Costs
-		Total Cost = 250 + 100 + Additional Costs
-		
-		Projected Timeline:
-		Consideration of the procurement timeline for the components and the development phases will impact the overall cost.
-		
-		Conclusion:
-		The ElGamal encryption project's economic aspect estimates a total cost of 350 for the development boards. Emphasis on utilizing budget-friendly components is highlighted for an economical solution. Further detailing of any additional expenses is recommended for a comprehensive economic evaluation.
+			
+		The ElGamal encryption project's economic aspect estimates a total cost of 20\$ for the development boards. Emphasis on utilizing budget-friendly components is highlighted for an economical solution. Further detailing of any additional expenses is recommended for a comprehensive economic evaluation.
 		\subsubsection{Manufacturability}
-		The success of this project is heavily reliant on manufacturability. The accessibility, cost, and ease of assembly of materials and components used in the production process are crucial factors. Throughout the project, attention should be given to the availability of preferred components and their ease of integration into the manufacturing stages. Additionally, simplifying or optimizing the design may be necessary to enhance efficiency and quality during production. Early-stage analyses and design modifications concerning manufacturability can minimize issues during the manufacturing process, facilitating a successful commercialization of the project.
+	Constraints related to manufacturability should address the ease of integrating ElGamal Encryption into existing systems and technologies. Ensuring compatibility and interoperability with different platforms and software solutions is crucial for seamless adoption and widespread use.
 		\subsubsection{Social}
   		Our project is subject to various social constraints such as respect for privacy, user consent, ethical use and security measures. The technologies used in the project must comply with legal regulations, and the transparent processing and protection of user data must be prioritized. User awareness should be raised through educational materials and community engagement.
 	\subsection{Certifications and/or Standards}
@@ -176,13 +199,13 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
 	\section{Concept Generation and Evaluation}
 	
 	\subsection{Level 0 Design:}
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\label{Level 0 Design of System }
 		\includegraphics[scale = 0.15]{images/level0design.jpg}\\[0.5 cm]	
 		\caption{Level 0 Design of System } 		
 	\end{figure}
-	\begin{table}[h]
+	\begin{table}[H]
 		\centering
 		
 		\label{Properties Of Level 0 Design }
@@ -199,7 +222,8 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
 	\end{table}
 	
 	\subsection{Level 1 Design}
-	\begin{figure}[h]
+	
+	\begin{figure}[H]
 		\centering
 		\label{Level 1 Design of System }
 		\includegraphics[scale = 0.25]{images/level1design.jpg}\\[0.5 cm]	
@@ -285,11 +309,35 @@ Additionally, in the realm of modern cryptography, various encryption methods ar
  	\end{figure}
 	\section{Conclusions}
 	
+	Our project is aimed at data security, which is a deep-rooted problem. First of all, we investigated the reason for the emergence of a branch of science such as Cryptography and how this need was integrated into the digital world as a result of historical developments.
+	
+	As a result of the research, we have seen that there are many encryption and security methods.
+	Later, we decided to continue with the ElGamal encryption method, which we thought was more suitable for our system.
+	
+	Within the scope of this project, we first learned about ElGamal and Cryptography with the support of our consultant. Then, we started to determine the requirements for the system we would implement. At this stage, we created Level 0 and Level 1 designs for the preliminary draft report. First of all, we performed the basic modeling of the system and determined the communication and system message transfer points. Afterwards, we defined the Wi-fi module and development cards that should be used for this system in more detail. Within this range of components, we defined which direction the data connection should be at which stage.
+	
+	Within the UML design, we have defined in more detail the sequences in which the system will perform these encryption stages. We have completed the basic lines of our project in the draft design of this system, in which we are technically more advanced.
+	
+	In the later stages, we will move towards technically detailed modeling of the system and definition of the software, such as Level 2. We will determine exactly the development cards we will use and try to act according to the points we mentioned regarding restrictions.
+	
 	\section{References}
 	
 	\section{Appendix}
-
-
+	\begin{figure}[H]
+	\centering
+	\label{Meeting1}
+	\includegraphics[scale = 0.5]{images/meet3.png}\\[0.5 cm]			
+\end{figure}
+	\begin{figure}[H]
+	\centering
+	\label{Meeting2}
+	\includegraphics[scale = 0.5]{images/meet2.png}\\[0.5 cm]			
+\end{figure}
+	\begin{figure}[H]
+	\centering
+	\label{Meeting3}
+	\includegraphics[scale = 0.5]{images/meet1.png}\\[0.5 cm]			
+\end{figure}
 	
 	
 

@@ -4,6 +4,7 @@
 \usepackage{natbib}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
+\usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \graphicspath{{images/}}
@@ -15,6 +16,8 @@
 \usepackage{multicol}
 \usepackage{lipsum}
 \usepackage{blindtext}
+\usepackage{amssymb}
+
 \usepackage{float}
 \usepackage{nameref}
 \setmarginsrb{3 cm}{0.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
@@ -86,14 +89,8 @@
 	
 	\renewcommand{\abstractname}{Summary}
 	\begin{abstract}
-		\addcontentsline{toc}{section}{Summary}		
-		Data security is very important in today's world. As a result of many malicious attempts, the need to ensure the security of digital data has arisen. In this context, there are many encryption methods to protect and secure digital data. In this project, ElGamal encryption method was used for the security of data exchange.
-		
-		The aim of our project is to ensure software security and prevent malicious attempts by using the ElGamal encryption method during data transfer.
-		
-		The software we want to create within the scope of this project; The message sent by the sender must be transmitted by the wi-fi module to our encryption development card, and then the sent message must be encrypted by the encryption development card using the ElGamal encryption method. This encrypted message must then be transmitted to the wi-fi module and directed to our decryption development card so that the text can be delivered deciphered to the recipient. The encrypted message deciphered on this card is transmitted back to the wi-fi module. Then, the deciphered message is transmitted to the recipient via this module, ensuring secure communication.
-		
-		In this way, data security will be ensured and one of the problems that has a large share in today's digitalizing world will be prevented.
+		\addcontentsline{toc}{section}{Summary}				
+		In response to the growing need for accessible secure communication, this project introduces an innovative system leveraging ElGamal encryption to democratize confidential messaging. The aim is to bridge the gap between robust security and affordability, enabling individuals from diverse backgrounds to engage in secure text-based interactions. The project has achieved significant milestones, having developed the encryption algorithm and identified specific hardware components, including STM32 microcontrollers, a Wi-Fi module for data transmission, and USB interfaces for connectivity. The system operates through two STM32 development boards—one dedicated to encryption and the other for decryption—offering a cost-effective and simplified approach. By utilizing these readily available and widely compatible hardware components, this initiative strives to make secure communication an everyday reality, fostering a safer digital environment where privacy is prioritized. Ultimately, the goal is to redefine secure messaging, ensuring that individuals can interact confidently while maintaining the confidentiality of their conversations
 		
 	\end{abstract}
 	
@@ -101,59 +98,77 @@
 \clearpage % Yeni bir sayfa başlatmak için
 \pagenumbering{arabic}
 	\section{Introduction}
-Encryption is crucial in the digital world because it ensures that sensitive information remains secure and private. It involves encoding data in a way that only authorized parties can access and understand it. Without encryption, data such as personal information, financial details, passwords, and communications would be vulnerable to unauthorized access, theft, or manipulation by cybercriminals or malicious entities.
+In today's digital age, ensuring the confidentiality and security of our communication is paramount. However, achieving this security often comes with a hefty price tag, rendering it inaccessible to many. Recognizing the need for a cost-effective yet robust solution, we introduce a system designed to democratize secure messaging using the efficient ElGamal encryption method.
 
-In today's landscape, encryption remains crucial as our reliance on digital communication and data sharing continues to grow. With the proliferation of smart devices, cloud storage, online transactions, and remote work, the volume of sensitive information transmitted over networks has increased significantly.
+The primary goal of this project is to establish a secure communication framework accessible to everyone. By leveraging ElGamal encryption, renowned for its effectiveness and affordability, we aim to break barriers and provide a platform for confidential text-based interactions without imposing significant financial burdens.
 
-Moreover, as privacy concerns gain prominence, individuals seek assurance that their personal data, conversations, and transactions remain confidential. Encryption serves as a vital tool in protecting this information, especially in the face of evolving cybersecurity threats and sophisticated hacking techniques.
+The system operates through a simplified yet potent mechanism involving two development boards. One board is tasked with encrypting the data, ensuring its confidentiality, while the other board handles decryption, allowing secure retrieval of the original message. This approach not only ensures affordability but also simplicity in its execution, making secure communication an achievable reality for individuals across diverse backgrounds.
 
-Overall, in today's digital era marked by increased connectivity and data sharing, encryption stands as an essential mechanism for safeguarding sensitive information, preserving privacy, and fortifying cybersecurity measures against evolving threats.
+Through this cost-efficient strategy, our system endeavors to facilitate secure message exchanges without compromising on the strength of encryption. By employing readily available development boards, we strive to make secure communication an integral part of everyday interactions, fostering a safer and more inclusive digital environment.
 
-Additionally, in the realm of modern cryptography, various encryption methods are employed to ensure secure communication and data protection. These include well-established techniques like RSA and AES, along with innovative approaches such as Elliptic Curve Cryptography (ECC) for resource-constrained environments and Homomorphic Encryption for secure computation on encrypted data. ElGamal encryption, noted for its secure key exchange abilities, stands among these methods as a key player in ensuring the confidentiality and integrity of sensitive information in our increasingly digital world.
+In essence, this project aims to redefine secure communication by bridging the gap between affordability and robust encryption. By democratizing access to secure messaging, we envision a future where individuals can interact confidently, knowing their conversations remain private and protected.
+
 
 \vskip 20cm
 	\section{Needs Identification}
-It is essential to identify the requirements concerning two development boards intended for El Gamal encryption. These boards should be designed as a pair, one dedicated to encryption and the other for decrypting the encrypted data.
 
+For text-based encryption, there is a need to create a system that enables secure messaging for everyone. Utilizing the cost-effective ElGamal encryption method, this system aims to provide accessible and secure communication for individuals seeking confidential text-based interaction without incurring significant expenses. The system operates through two development boards, where one board encrypts the data and sends it to the other board, responsible for decryption. This cost-efficient approach ensures that anyone can securely exchange messages, fostering a safer digital environment for communication.
 
-The design of the two development boards intended for El Gamal encryption must facilitate encryption and decryption processes to ensure data security in communication. These boards should possess reliable and effective capabilities for data encryption and decryption. Moreover, they should encompass algorithms and processes necessary to ensure data integrity and security.
-
-
-This project entails the design and development of two dedicated boards. The primary goal is to create systems capable of effectively performing El Gamal encryption, enabling one board to perform encryption and the other to decipher the encrypted data, thereby ensuring secure communication. These boards should operate in compliance with industry standards to ensure data security and confidentiality.
-
-
+	
+	\subsection{Statement of Engineering Problem:}
+	The engineering challenge lies in developing a system that efficiently enables text-based encryption for secure messaging without imposing high costs. The existing solutions might either lack accessibility or be cost-prohibitive for many users. The problem at hand involves creating an encryption solution that ensures confidentiality in text-based communication without being financially burdensome.
+	
+	\subsection{Goal and Objectives:}
+	\subsubsection{Goal:}
+	The primary objective is to create a cost-efficient system utilizing the ElGamal encryption method, enabling accessible and secure text-based communication for all users.
+	
+	\subsubsection{Objectives:}
+	\begin{itemize}
+		\item Develop a system that implements ElGamal encryption for text-based communication securely.
+		\item Ensure the system is cost-effective, avoiding significant financial barriers for users.
+		\item Design the system to operate between two development boards, enabling encryption and decryption seamlessly.
+		\item Provide a means for individuals to securely exchange messages without compromising confidentiality.
+		\item Foster a safer digital environment by making secure communication accessible to everyone.
+	\end{itemize}
+\newpage
 	\section{Research Survey and Background information}
+
+	\begin{itemize}
+		\item \textbf{ElGamal Encryption}:
+		\begin{itemize}
+			\item ElGamal is a public-key (asymmetric) cryptosystem based on the mathematical properties of modular exponentiation and the difficulty of certain mathematical problems.
+			\item It involves key generation, encryption, and decryption processes.
+		\end{itemize}
 		
-		ElGamal Encryption: ElGamal is a public-key(asymmetric) cryptosystem based on the mathematical properties of modular exponentiation and the difficulty of certain mathematical problems. It involves key generation, encryption, and decryption processes.
-		How It's Currently Being Done:
+		\item \textbf{How It's Currently Being Done}:
+		\begin{itemize}
+			\item \textbf{Key Generation}: Each card generates its own public and private key pair.
+			\item \textbf{Encryption}: Card A encrypts a message using Card B's public key and a random integer number.
+			\item \textbf{Decryption}: Card B decrypts the received message using its private key.
+		\end{itemize}
 		
-		Key Generation: Each card generates its own public and private key pair.
-		Encryption: Card A encrypts a message using Card B's public key and random integer number.
-		
-		Decryption: Card B decrypts the received message using its private key.
-		Limitations of Current Designs or Technology:
-		
-		Computational Intensity: ElGamal encryption can be computationally intensive, which might be a limitation for resource-constrained devices.
-		
-		Key Size: To ensure security, ElGamal often requires larger key sizes, potentially impacting communication efficiency.
-		
-		Vulnerability to Quantum Attacks: ElGamal, like many public-key systems, is vulnerable to attacks leveraging quantum computers.
+		\item \textbf{Limitations of Current Designs or Technology}:
+		\begin{itemize}
+			\item \textbf{Computational Intensity}: ElGamal encryption can be computationally intensive, which might be a limitation for resource-constrained devices.
+			\item \textbf{Key Size}: To ensure security, ElGamal often requires larger key sizes, potentially impacting communication efficiency.
+			\item \textbf{Vulnerability to Quantum Attacks}: ElGamal, like many public-key systems, is vulnerable to attacks leveraging quantum computers.
+		\end{itemize}
+	\end{itemize}
 		
 		
-		In an article published by Omar A. Imran in 2019 they focused on speech signal encryption/decryption.
-		
-		 The referenced article primarily focuses on employing El-Gamal encryption for speech signal encryption and decryption. In contrast, our project concentrates on the development of dual-board systems specifically for El-Gamal encryption, with specific data type which is text.
+		In an article published by Omar A. Imran in 2019\cite{IMRAN20201028} they focused on speech signal encryption/decryption.	The referenced article primarily focuses on employing El-Gamal encryption for speech signal encryption and decryption. 
+		 
+	 \textbf{The differences of our project from the mentioned model are as follows:}
+	 \begin{itemize}
+	 	\item \textbf{Dual-Board Encryption System}: Unlike some existing projects that might focus on single-board encryption, our project distinctly involves the development of a dual-board system specifically designed for ElGamal encryption.
+	 \end{itemize}
 	 
-		The differences of our project from the mentioned model are as follows:
-		
-		Dual-Board Encryption System: Unlike some existing projects that might focus on single-board encryption, our project distinctly involves the development of a dual-board system specifically designed for El Gamal encryption. This two-board setup, with one dedicated to encryption and the other for decryption, is a unique aspect of our project.
-		
-		
-		The similarities of our project with the mentioned article are as follows:
-		
-		Focus on Data Security: Similar to several existing projects, our project shares a fundamental focus on ensuring data security. Encryption and decryption processes aim to safeguard transmitted data from unauthorized access.
-			
-		Utilization of El-Gamal Algorithm: Both the referenced article and our project utilize the El-Gamal algorithm for encryption purposes, acknowledging its strength in public key cryptography.
+	 \textbf{The similarities of our project with the mentioned article are as follows:}
+	 \begin{itemize}
+	 	\item \textbf{Focus on Data Security}: Similar to several existing projects, our project shares a fundamental focus on ensuring data security. Encryption and decryption processes aim to safeguard transmitted data from unauthorized access.
+	 	
+	 	\item \textbf{Utilization of ElGamal Algorithm}: Both the referenced article and our project utilize the ElGamal algorithm for encryption purposes, acknowledging its strength in public key cryptography.
+	 \end{itemize}
 		
 
 		
@@ -163,14 +178,13 @@ This project entails the design and development of two dedicated boards. The pri
 		
 	\subsection{Engineering requirements}
 	\begin{enumerate}
-		\item[a.] Shall be communicate wireless.
+		\item[a.] Shall  communicate wireless.
 		\item[b.] Shall encrypt/decrypt using at least 32 bit prime numbers.
 		\item[c.] Shall has at least 1 hours operating time.
 		\item[d.] Shall determine how the El-Gamal encryption algorithm will be implemented on the development board. This shall involve the mathematical operations of the algorithm, memory usage, and processor requirements. 
 		\item[e.] Shall address security aspects such as the random number generator and key management necessary for El-Gamal encryption in a sensitive and secure manner.
-		\item[f.] Shall create and implement comprehensive testing procedures to ensure the accuracy and reliability of encryption and decryption operations.
-		\item[g.] Shall be able to operate consistently and effectively, without failing or
-		experiencing downtime
+		
+	
 				
 	\end{enumerate}
 	\subsection{Marketing Requirements}
@@ -221,15 +235,18 @@ This project entails the design and development of two dedicated boards. The pri
 		\caption{Properties of Level 0 Design }
 	\end{table}
 	
-	\subsection{Level 1 Design}
-	
+	\subsection{Level 1 Design:}
+
 	\begin{figure}[H]
 		\centering
 		\label{Level 1 Design of System }
 		\includegraphics[scale = 0.25]{images/level1design.jpg}\\[0.5 cm]	
 		\caption{Level 1 Design of System } 		
 	\end{figure}
+	
+
 \begin{table}[h]
+
 	\centering
 	
 	\label{Properties of Encryption Card}
@@ -245,9 +262,11 @@ This project entails the design and development of two dedicated boards. The pri
 		Functionality & Encrypting given input.\\ \hline		
 	\end{tabular}
 	\caption{Properties of Encryption Card}
+
 \end{table}
 
 \begin{table}[h]
+
 	\centering	
 	\label{Properties of Decryption Card }
 	\begin{tabular}{|c|c|}
@@ -261,82 +280,107 @@ This project entails the design and development of two dedicated boards. The pri
 		
 	\end{tabular}
 	\caption{Properties of Decryption Card}
+
 \end{table}
-	\begin{table}[h]
+	\begin{table}[H]
+
 		\centering		
 		\label{Properties of Access Point }
 		\begin{tabular}{|c|c|}
 			\hline
 			Module & Access Point \\ \hline
-			\multirow{5}{*}{Inputs} & Power 3.3V DC \\
-			\cline{2-2}
-			& User Input (Message) \\
+			\multirow{3}{*}{Inputs} & Power 3.3V DC \\
+			
 			\cline{2-2}
 				& Encrypted Message \\
-			\cline{2-2}
-				& Decrypted Message \\
+		
 			\cline{2-2}
 				& Public Key \\
 			\cline{2-2} \hline
-			
-				\multirow{4}{*}{Outputs} & Message\\
-			\cline{2-2}
-			& Public Key \\
+	
+				\multirow{2}{*}{Outputs} 	& Public Key \\
 			\cline{2-2}
 			& Encrypted Message \\
-			\cline{2-2}
-			& Decrypted Message \\
+			
 			\cline{2-2} \hline
 			
 			Functionality & Access Point.\\ \hline	
-			
+	
 		\end{tabular}
 		\caption{Properties of Access Point}
-	\end{table}
 
+	\end{table}
+	
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		UI & Display & Connection & Power & Dev Board \\
+		\hline
+		\textbf{UI App}$\checkmark$
+		 &\textbf{Monitor}$\checkmark$
+		   & \textbf{Wifi}$\checkmark$
+		   & Solar Cell & Arduino\\
+		\hline
+		\textbf{Keyboard}$\checkmark$
+		 & LCD & Bluetooth & Li-on Battery & Rasberry Pi \\
+		\hline
+		Voice & Head-up Display & Ethernet & Fuel Cell &\textbf{Stm32}$\checkmark$
+		 \\
+		\hline
+		Video & Oled & USB & \textbf{Lipo Battery}$\checkmark$
+		 & Jetson Nano \\
+		\hline
+	\end{tabular}
+	\caption{Consept Table}
+\end{table}
 
 
 \vskip 10cm
-	\subsection{Demonstration of how behavioral models}
-	\subsubsection{UML Design}
+\subsection{Demonstration of how behavioral models:}
+	
+	\subsubsection{Activity Diagram}
  	The general UML diagram of our software is shown in the figure and it shows that. First, a public key is generated on the decryption card for encryption and this key is sent to the encryption card. Then, on the encryption card, the user's message is converted into a numeric value and encrypted with the public key of the decryption card and the encrypted message is sent to the decryption card. The encrypted message is decrypted with the decryption card's own private key and the original message is obtained on the decryption card.
  	
- 	\begin{figure}[h]
+ 	\begin{figure}[H]
  		\centering
  		\label{Uml Diagram Of The System}
- 		\includegraphics[scale = 0.25]{images/umldiagram.jpg}\\[0.5 cm]	
- 		\caption{Uml Diagram Of The System} 		
+ 		\includegraphics[scale = 0.35]{images/activitydiagram.jpg}\\[0.5 cm]	
+ 		\caption{Activity Diagram Of The System} 		
  	\end{figure}
+ 	\newpage
 	\section{Conclusions}
 	
-	Our project is aimed at data security, which is a deep-rooted problem. First of all, we investigated the reason for the emergence of a branch of science such as Cryptography and how this need was integrated into the digital world as a result of historical developments.
+	Firstly, it is crucial to emphasize the purpose and requirements of the project. We plan to use two development boards to implement ElGamal encryption. One of these boards will perform the encryption process, while the other will decrypt the cipher. The user's input text will be encrypted for secure transmission. The primary objectives of our project include being cost-effective, appealing to a wide audience, and ensuring accessibility.
 	
-	As a result of the research, we have seen that there are many encryption and security methods.
-	Later, we decided to continue with the ElGamal encryption method, which we thought was more suitable for our system.
+	Our proposed solution will employ the secure encryption algorithm ElGamal to ensure the security of communication. This differentiates our solution from other available alternatives because ElGamal is generally acknowledged as a reliable and effective encryption method. Additionally, we offer a hardware-based solution using two different development boards, which can be considered an innovative approach to the project.
 	
-	Within the scope of this project, we first learned about ElGamal and Cryptography with the support of our consultant. Then, we started to determine the requirements for the system we would implement. At this stage, we created Level 0 and Level 1 designs for the preliminary draft report. First of all, we performed the basic modeling of the system and determined the communication and system message transfer points. Afterwards, we defined the Wi-fi module and development cards that should be used for this system in more detail. Within this range of components, we defined which direction the data connection should be at which stage.
+	The analyses conducted indicate that the project provides a cost-effective solution and is accessible to a broad user base. ElGamal encryption stands out with its reliability and effectiveness. The hardware-based solution may offer faster and more reliable performance.
 	
-	Within the UML design, we have defined in more detail the sequences in which the system will perform these encryption stages. We have completed the basic lines of our project in the draft design of this system, in which we are technically more advanced.
-	
-	In the later stages, we will move towards technically detailed modeling of the system and definition of the software, such as Level 2. We will determine exactly the development cards we will use and try to act according to the points we mentioned regarding restrictions.
-	
+	In conclusion, our designed solution has significant advantages, such as reliability, cost-effectiveness, and appeal to a broad user base. The use of the ElGamal encryption algorithm is seen as an effective method for ensuring communication security. Our hardware-based approach also provides a specific advantage to the project. Overall, this project emerges as a suitable solution for general use.
+	\newpage
 	\section{References}
-	
+
+
+\bibliographystyle{plain}
+\bibliography{S1877050920308681} % Burada "referanslar" dosyasının adı
+
+	\newpage
 	\section{Appendix}
 	\begin{figure}[H]
 	\centering
 	\label{Meeting1}
-	\includegraphics[scale = 0.5]{images/meet3.png}\\[0.5 cm]			
+	\includegraphics[scale = 0.3]{images/meet3.png}\\[0.5 cm]			
 \end{figure}
 	\begin{figure}[H]
 	\centering
 	\label{Meeting2}
-	\includegraphics[scale = 0.5]{images/meet2.png}\\[0.5 cm]			
+	\includegraphics[scale = 0.3]{images/meet2.png}\\[0.5 cm]			
 \end{figure}
 	\begin{figure}[H]
 	\centering
 	\label{Meeting3}
-	\includegraphics[scale = 0.5]{images/meet1.png}\\[0.5 cm]			
+	\includegraphics[scale = 0.3]{images/meet1.png}\\[0.5 cm]			
 \end{figure}
 	
 	

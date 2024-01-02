@@ -20,6 +20,7 @@
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{float}
 \usepackage{nameref}
+\usepackage{longtable}
 \setmarginsrb{3 cm}{0.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 \title{EEE 491 Engineering Design I}							
 \date{\today}											
@@ -55,19 +56,21 @@
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushleft} \large
 				\emph{Student Name(s):}\\
+				\text{Mert Afacan}\\
 				\text{Bora Bostanoğlu}\\
 				\text{Eren Öztürk}\\
-				\text{Mert Afacan}\\
+			
 				
 			\end{flushleft}
 			
 		\end{minipage}~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright} \large
-				\emph{Student Number:} \\				
+				\emph{Student Number:} \\	
+				\text{191112001}\\			
 				\text{191112012}\\
 				\text{191112029}\\
-				\text{191112001}\\
+				
 			% Your Student Number
 			\end{flushright}
 		\end{minipage}\\[2 cm]
@@ -242,7 +245,7 @@ For text-based encryption, there is a need to create a system that enables secur
 	\begin{figure}[H]
 		\centering
 		\label{Level 1 Design of System }
-		\includegraphics[scale = 0.25]{images/level1design.jpg}\\[0.5 cm]	
+		\includegraphics[scale = 0.25]{images/level1designnew.jpg}\\[0.5 cm]	
 		\caption{Level 1 Design of System } 		
 	\end{figure}
 	
@@ -339,9 +342,33 @@ For text-based encryption, there is a need to create a system that enables secur
 
 
 \vskip 10cm
+
+
+\subsection{Level2 Design}
+	\begin{figure}[H]
+	\centering
+	\label{Level2 Design Of The System}
+	\includegraphics[scale = 0.25]{images/level2design.jpg}\\[0.5 cm]	
+	\caption{Level2 Design Of The System} 		
+\end{figure}
+	\begin{figure}[H]
+	\centering
+	\label{Level21 Design Of The System}
+	\includegraphics[scale = 0.25]{images/level2design1.jpg}\\[0.5 cm]	
+	\caption{Level2 Design Of The System} 		
+\end{figure}
+	\begin{figure}[H]
+	\centering
+	\label{Level22 Design Of The System}
+	\includegraphics[scale = 0.25]{images/level2design12.jpg}\\[0.5 cm]	
+	\caption{Level2 Design Of The System} 		
+\end{figure}
+\newpage
+\subsection{Test Plans}
 \subsection{Demonstration of how behavioral models:}
 	
 	\subsubsection{Activity Diagram}
+	
  The general activity diagram of our project is shown in the Figure 3 and it shows that. First, a public key is generated on the decryption card for encryption and this key is sent to the encryption card. Meanwhile user can enter a message to the user interface and send it to the encryption card. Then, on the encryption card, the user's message is converted into a numeric value and encrypted with the public key of the receiver card and the encrypted message is sent to the decryption card. on the decryption card, the encrypted message is decrypted with the decryption card's own private key and the original message is obtained. Finally decryption card sends message to the user interface and user can display the message.
  	\begin{figure}[H]
  		\centering
@@ -349,8 +376,82 @@ For text-based encryption, there is a need to create a system that enables secur
  		\includegraphics[scale = 0.35]{images/activitydiagram.jpg}\\[0.5 cm]	
  		\caption{Activity Diagram Of The System} 		
  	\end{figure}
+ \newpage
+ \begin{figure}[H]
+ 	\centering
+ 	\label{}
+ 	\includegraphics[scale = 0.35]{images/datadiagram.png}\\[0.5 cm]	
+ 	\caption{Udp Diagram Of The System} 		
+ \end{figure}
+
+ \begin{table}[H]	
+ 	\centering
+ 	\begin{tabular}{|c|c|}
+ 		\hline
+ 		Data Name & Start Byte  \\
+ 		\hline
+ 		Public Key &  0xAA \\ \hline
+ 		Encrypted Message &  0xBB \\ \hline
+ 		Decrypted Message &  0xCC  \\ \hline
+ 		User Input & 0xDD  \\ \hline
+ 		Communication Error &  0xEE \\ \hline
+ 	\end{tabular}
+	\caption{Start Byte's} 
+\end{table}
  	\newpage
-	\section{Conclusions}
+ 	\section{Work Plan}
+ 	\renewcommand{\arraystretch}{2}
+ 
+ 		\renewcommand{\arraystretch}{1}
+ 	\centering
+ 		\begin{longtable}{|p{1cm}|p{2cm}|p{1.6cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+ 		
+ 			\hline
+ 			Task Id & Task Description & Task Owner & Task  Responsibility & Task Status & Estimated Cost & Timeline \\
+ 			\hline
+ 			1 & Gathering Information &  &  &  & &  \\ 	\hline
+ 			1.1 & Literature Research & Everyone & To have knowledge in the field of encryption. & Done &  &  \\ 	\hline
+ 			2 & Main Components &  &  &  &  &  \\ 	\hline
+ 			2.1 & Development Board & Eren & Selection of the appropriate card and  examining the datasheet.& Done & 331.85 * 2 =662.7  & 2 days \\ 	\hline
+ 			2.2 & Communication Module & Mert & Selection of the appropriate card and  examining the datasheet.  & Done  & 60.14 * 3 =180.42  & 2 days  \\ 	\hline
+ 			3 & Design States &  &  &  &  &  \\ 	\hline
+ 			3.1 & Algorithm Design & Everyone & Fundamental Design of the Project  & Done  & 0  & 4 week  \\ 	\hline
+ 			3.2 & Software Design for Algorithm & Bora  & Reflecting the Algorithm to the code lines  & Not Started  & 0 & 4 week\\ 	\hline
+ 			3.3& Software Design for UI & Mert  & Designing UI for using the system. & Not Started  & 0  & 4 week \\ 	\hline
+ 			4 & Implementation &   &  &   &   & 4 week \\ 	\hline
+ 			4.1 & Purchase of other Components & Bora  & USB – TTL cables etc.  & Not Started  & 0 & 2 days  \\ 	\hline
+ 			4.2 & Test Debugging& Eren  & Validation  & Not Started  & 0  & 4 weeks  \\
+ 			\hline
+ 		\end{longtable}
+ 	
+
+ 	\newpage
+ 	\section{Risk Analysis}
+ 		
+ 
+ 	
+
+ 		\begin{longtable}{|p{3cm}|p{3cm}|p{1.6cm}|p{2cm}|p{2cm}|}
+ 			\hline
+ 			Risk  & Effects on the Project  & Level Of Risk  & Plan B & Plan C  \\
+ 			\hline
+ 		\endfirsthead
+ 	
+ 			The technical algorithm planned for the project turned out to be an error in practice.  & Privacy, which is the purpose of the project, is at risk.  & 5  & Achieving practical solutions by checking software outputs. & Following the outputs through the UML diagram and detecting the error.  \\	\hline
+ 			Not noticing some "bugs" from the Testing Debugging phase.  & It may cause several problems in terms of user interface or software.  & 2  & Checking which line causes this situation. &   \\	\hline
+ 			Disruptions or signal confusion in the communication process between modules.  & Failure to communicate due to confusion may result in the process being completed incorrectly, or not being completed at all.  & 4  & By carrying out the process step by step, the source of the confusion can be found.  & In case of signal interference, distance can be left between the communication modules.  \\	\hline
+ 			The components we have do not work or cannot function at the time of the process. & It directly causes the project not to work.  & 1  & The problem can be solved by making changes to the system using spare parts.  &   \\
+ 			\hline
+ 			\caption{5x5 Tablo Örneği}
+ 	
+ 		\end{longtable}
+ 	
+ 		
+ 
+ 	\newpage
+ 	\section{Cost Analysis}
+ 	\newpage
+ 		\section{Conclusions}
 	
 	Firstly, it is crucial to emphasize the purpose and requirements of the project. We plan to use two development boards to implement ElGamal encryption. One of these boards will perform the encryption process, while the other will decrypt the cipher. The user's input text will be encrypted for secure transmission. The primary objectives of our project include being cost-effective, appealing to a wide audience, and ensuring accessibility.\cite{koblitz2012course}
 

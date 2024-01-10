@@ -7,6 +7,8 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
 \graphicspath{{images/}}
 \usepackage{parskip}
 \usepackage{fancyhdr}
@@ -365,17 +367,120 @@ For text-based encryption, there is a need to create a system that enables secur
 \end{figure}
 \newpage
 \subsection{Test Plans}
+\subsubsection*{Unit Test}
+\begin{itemize}
+	\item \textbf{USB TTL Module Test:}
+	\begin{itemize}
+		\item \textbf{Purpose:} To verify that the USB TTL module is capable of transmitting and receiving data correctly.
+		\item \textbf{Procedure:} Send a predefined data sequence to the USB TTL module and confirm that the same sequence is received without errors.
+		\item \textbf{Expected Result:} Data transmitted matches data received.
+	\end{itemize}
+	
+	\item \textbf{Client Application Test:}
+	\begin{itemize}
+		\item \textbf{Purpose:} To ensure the client application on both the encryption and decryption systems processes input and output correctly.
+		\item \textbf{Procedure:} Provide input to the client application and verify the response matches expected behavior for both encryption and decryption.
+		\item \textbf{Expected Result:} The client application should correctly encrypt or decrypt the input data and display the expected results.
+	\end{itemize}
+	
+	\item \textbf{Development Board Tests:}
+	\begin{itemize}
+		\item \textbf{Purpose:} To test the functionality of the development board in handling encryption and decryption tasks.
+		\item \textbf{Procedure:} Load test firmware onto the development board that performs encryption and decryption tasks, using known keys and data.
+		\item \textbf{Expected Result:} The development board successfully encrypts and decrypts data, matching expected output.
+	\end{itemize}
+\end{itemize}
+\subsubsection*{Module Test}
+\begin{itemize}
+	\item \textbf{Client to Development Board Communication Test:}
+	\begin{itemize}
+		\item \textbf{Purpose:} To validate the communication link between the client application and the development board.
+		\item \textbf{Procedure:} Execute a series of commands from the client to the development board and verify actions are executed as intended.
+		\item \textbf{Expected Result:} Seamless communication and correct action execution.
+	\end{itemize}
+	
+	\item \textbf{USB TTL to Development Board Interface Test:}
+	\begin{itemize}
+		\item \textbf{Purpose:} To check the interface between the USB TTL module and the development board for data integrity.
+		\item \textbf{Procedure:} Send varying lengths of data packets and validate integrity upon receipt.
+		\item \textbf{Expected Result:} No data corruption or loss in transmission.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Functional Test}
+
+	\begin{itemize}
+		\item \textbf{Purpose:} To test the complete functionality of the encryption system.
+		\item \textbf{Procedure:} Simulate user input and validate encrypted output against known encryption algorithms.
+		\item \textbf{Expected Result:} Encrypted output matches the expected encrypted data.
+	\end{itemize}
+	
+	\begin{itemize}
+		\item \textbf{Purpose:} To confirm that the decryption system accurately deciphers encrypted messages.
+		\item \textbf{Procedure:} Provide known encrypted data to the system and verify if the decrypted output matches the original plaintext.
+		\item \textbf{Expected Result:} The system successfully decrypts the input to its original form.
+	\end{itemize}
+
+\subsubsection*{Integration Tests}
+
+	\begin{itemize}
+		\item \textbf{Purpose:} To validate the integrated performance of the encryption and decryption systems using the access point.
+		\item \textbf{Procedure:} Send a message from User 1 through the encryption system to the access point, then to the decryption system, and finally to User 2. Verify the integrity of the received message at User 2's end.
+		\item \textbf{Expected Result:} User 2 receives the message exactly as sent by User 1, demonstrating successful end-to-end encryption and decryption.
+	\end{itemize}
+	
+	\begin{itemize}
+		\item \textbf{Purpose:} To test the communication reliability and data integrity of the access point when interfacing with both the encryption and decryption systems.
+		\item \textbf{Procedure:} Transmit encrypted data through the access point to the decryption system and verify consistency and integrity.
+		\item \textbf{Expected Result:} The access point correctly relays data without loss or corruption.
+	\end{itemize}
+
+\newpage
 \subsection{Demonstration of how behavioral models:}
 	
 	\subsubsection{Activity Diagram}
 	
  The general activity diagram of our project is shown in the Figure 3 and it shows that. First, a public key is generated on the decryption card for encryption and this key is sent to the encryption card. Meanwhile user can enter a message to the user interface and send it to the encryption card. Then, on the encryption card, the user's message is converted into a numeric value and encrypted with the public key of the receiver card and the encrypted message is sent to the decryption card. on the decryption card, the encrypted message is decrypted with the decryption card's own private key and the original message is obtained. Finally decryption card sends message to the user interface and user can display the message.
+ 
  	\begin{figure}[H]
  		\centering
  		\label{Uml Diagram Of The System}
- 		\includegraphics[scale = 0.35]{images/activitydiagram.jpg}\\[0.5 cm]	
+ 		\includegraphics[scale = 0.3]{images/activitydiagram.jpg}\\[0.5 cm]	
  		\caption{Activity Diagram Of The System} 		
  	\end{figure}
+ \newpage
+ 	\begin{figure}[H]
+ 	\centering
+ 	\label{Enc Diagram}
+ 	\includegraphics[scale = 0.35]{images/activitydiagramenc.jpg}\\[0.5 cm]	
+ 	\caption{Activity Diagram Of The Encryption System } 		
+ \end{figure}
+\begin{itemize}
+	\item \textbf{bool SystemCheck():} This function verifies whether there is an issue within the system.
+	\item \textbf{bool CheckPublicKey():} This function awaits public key
+	\item \textbf{void Send(param1, param2):} 
+	This function correctly delivers the message to the intended destination based on the two provided parameters.
+	\item \textbf{bool CheckUserInput():}  This function awaits user input.
+	\item \textbf{void CalcNumEq(userInput):} This function calculates the numerical equivalent of user input.
+	\item \textbf{void Encrypt(numEq):} This function encrypts the numerical equivalent.
+	\item \textbf {bool IsMessageSent():} This function checks if the message has been sent.
+\end{itemize}
+ \newpage
+\begin{figure}[H]
+	\centering
+	\label{dec Diagram}
+	\includegraphics[scale = 0.35]{images/activitydiagramdec.jpg}\\[0.5 cm]	
+	\caption{Activity Diagram Of The Decryption System } 		
+\end{figure}
+\begin{itemize}
+	\item \textbf{bool SystemCheck():}  This function verifies whether there is an issue within the system.
+	\item \textbf{bool GenerateKey():} This function generates public and private keys.
+	\item \textbf{void Send(publicKey, type):} 	This function correctly delivers the message to the intended destination based on the two provided parameters.
+	\item \textbf{void Decrypt(encMes):} This function decrypts the incoming encrypted numerical equivalent.
+	\item \textbf{void NumToText(decMes):} This function converts the decrypted numerical equivalent into text.
+	\item \textbf{void Send(textMes, type):} This function correctly delivers the message to the intended destination based on the two provided parameters.
+	\item \textbf {bool IsMessageSent()} This function checks if the message has been sent.
+\end{itemize}
  \newpage
  \begin{figure}[H]
  	\centering
@@ -400,11 +505,10 @@ For text-based encryption, there is a need to create a system that enables secur
 \end{table}
  	\newpage
  	\section{Work Plan}
- 	\renewcommand{\arraystretch}{2}
- 
- 		\renewcommand{\arraystretch}{1}
  	\centering
- 		\begin{longtable}{|p{1cm}|p{2cm}|p{1.6cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+ 	\begin{table}
+ 		\resizebox{\textwidth}{!}{
+ 		\begin{tabular}{|c|c|c|c|c|c|c|}
  		
  			\hline
  			Task Id & Task Description & Task Owner & Task  Responsibility & Task Status & Estimated Cost & Timeline \\
@@ -422,8 +526,9 @@ For text-based encryption, there is a need to create a system that enables secur
  			4.1 & Purchase of other Components & Bora  & USB – TTL cables etc.  & Not Started  & 0 & 2 days  \\ 	\hline
  			4.2 & Test Debugging& Eren  & Validation  & Not Started  & 0  & 4 weeks  \\
  			\hline
- 		\end{longtable}
- 	
+ 		\end{tabular}
+ 	}
+ 	\end{table}
 
  	\newpage
  	\section{Risk Analysis}
@@ -437,10 +542,10 @@ For text-based encryption, there is a need to create a system that enables secur
  			\hline
  		\endfirsthead
  	
- 			The technical algorithm planned for the project turned out to be an error in practice.  & Privacy, which is the purpose of the project, is at risk.  & 5  & Achieving practical solutions by checking software outputs. & Following the outputs through the UML diagram and detecting the error.  \\	\hline
- 			Not noticing some "bugs" from the Testing Debugging phase.  & It may cause several problems in terms of user interface or software.  & 2  & Checking which line causes this situation. &   \\	\hline
- 			Disruptions or signal confusion in the communication process between modules.  & Failure to communicate due to confusion may result in the process being completed incorrectly, or not being completed at all.  & 4  & By carrying out the process step by step, the source of the confusion can be found.  & In case of signal interference, distance can be left between the communication modules.  \\	\hline
- 			The components we have do not work or cannot function at the time of the process. & It directly causes the project not to work.  & 1  & The problem can be solved by making changes to the system using spare parts.  &   \\
+ 			The technical algorithm planned for the project turned out to be an error in practice.  & Privacy, which is the purpose of the project, is at risk.  & High Risk  & Achieving practical solutions by checking software outputs. & Following the outputs through the UML diagram and detecting the error.  \\	\hline
+ 			Not noticing some "bugs" from the Testing Debugging phase.  & It may cause several problems in terms of user interface or software.  & Low-Moderate Risk  & Checking which line causes this situation. &   \\	\hline
+ 			Disruptions or signal confusion in the communication process between modules.  & Failure to communicate due to confusion may result in the process being completed incorrectly, or not being completed at all.  & Moderate-High Risk& By carrying out the process step by step, the source of the confusion can be found.  & In case of signal interference, distance can be left between the communication modules.  \\	\hline
+ 			The components we have do not work or cannot function at the time of the process. & It directly causes the project not to work.  & Low Risk  & The problem can be solved by making changes to the system using spare parts.  &   \\
  			\hline
  			\caption{5x5 Tablo Örneği}
  	
@@ -459,6 +564,8 @@ For text-based encryption, there is a need to create a system that enables secur
 	Our proposed solution will employ the secure encryption algorithm ElGamal to ensure the security of communication. This differentiates our solution from other available alternatives because ElGamal is generally acknowledged as a reliable and effective encryption method\cite{mollin2001introduction}. Additionally, we offer a hardware-based solution using two different development boards, which can be considered an innovative approach to the project.
 	
 	ElGamal encryption stands out for its effectiveness and reliability, and the project's cost-effective solution is accessible to a wide range of users, according to the evaluations done. The hardware-based solution might provide more dependable and faster performance.
+	
+Cost-effectiveness is another important component that contributes to the project's attractiveness. Through the use of open-source technology and widely accessible development boards, the project manages expenses while maintaining a high standard of encryption service. This strategy fosters adoption and deployment in a variety of situations, from individual users concerned with privacy to small enterprises seeking for cost-effective security solutions, in addition to making the project financially accessible to a wide range of users.
 	
 In conclusion, there are a number of noteworthy benefits to our proposed solution, including its dependability, affordability, and appeal to a wide range of users. The use of the ElGamal encryption algorithm is seen as an effective method for ensuring communication security	\cite{van1999fundamentals}. Overall, the project shows promise as a general-purpose solution, and our hardware-based approach offers a unique benefit.
 	\newpage

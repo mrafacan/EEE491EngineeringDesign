@@ -505,37 +505,41 @@ For text-based encryption, there is a need to create a system that enables secur
 \end{table}
  	\newpage
  	\section{Work Plan}
+	\begin{table}[H]
+
+ 		\renewcommand{\arraystretch}{0.2}
  	\centering
- 	\begin{table}
- 		\resizebox{\textwidth}{!}{
- 		\begin{tabular}{|c|c|c|c|c|c|c|}
- 		
- 			\hline
- 			Task Id & Task Description & Task Owner & Task  Responsibility & Task Status & Estimated Cost & Timeline \\
- 			\hline
- 			1 & Gathering Information &  &  &  & &  \\ 	\hline
- 			1.1 & Literature Research & Everyone & To have knowledge in the field of encryption. & Done &  &  \\ 	\hline
- 			2 & Main Components &  &  &  &  &  \\ 	\hline
- 			2.1 & Development Board & Eren & Selection of the appropriate card and  examining the datasheet.& Done & 331.85 * 2 =662.7  & 2 days \\ 	\hline
- 			2.2 & Communication Module & Mert & Selection of the appropriate card and  examining the datasheet.  & Done  & 60.14 * 3 =180.42  & 2 days  \\ 	\hline
- 			3 & Design States &  &  &  &  &  \\ 	\hline
- 			3.1 & Algorithm Design & Everyone & Fundamental Design of the Project  & Done  & 0  & 4 week  \\ 	\hline
- 			3.2 & Software Design for Algorithm & Bora  & Reflecting the Algorithm to the code lines  & Not Started  & 0 & 4 week\\ 	\hline
- 			3.3& Software Design for UI & Mert  & Designing UI for using the system. & Not Started  & 0  & 4 week \\ 	\hline
- 			4 & Implementation &   &  &   &   & 4 week \\ 	\hline
- 			4.1 & Purchase of other Components & Bora  & USB – TTL cables etc.  & Not Started  & 0 & 2 days  \\ 	\hline
- 			4.2 & Test Debugging& Eren  & Validation  & Not Started  & 0  & 4 weeks  \\
- 			\hline
- 		\end{tabular}
- 	}
- 	\end{table}
+ 	\begin{longtable}{|p{1cm}|p{2.75cm}|p{1.6cm}|p{2.5cm}|p{1.25cm}|p{1.5cm}|p{2cm}|}	\hline
+ 		Task Id & Task Description & Task Owner & Task Responsibility & Task Status & Estimated Cost & Timeline \\
+ 		\hline
+ 		\endfirsthead
+		
+ 		1 & Gathering Information &  &  &  & & \\  \hline
+ 		1.1 & Literature Research & Everyone & To have knowledge in the field of encryption. & Done &  & \\  \hline
+ 		2 & Main Components &  &  &  &  & \\  \hline
+ 		2.1 & Development Board & Eren & Selection of the appropriate card and  examining the datasheet.& Done & 331.85 * 2 =662.7  & 2 days \\  \hline
+ 		2.2 & Communication Module & Mert & Selection of the appropriate card and  examining the datasheet.  & Done  & 60.14 * 3 =180.42  & 2 days  \\  \hline
+ 		3 & Design States &  &  &  &  & \\  \hline
+ 		3.1 & Algorithm Design & Everyone & Fundamental Design of the Project  & Done  & 0  & 4 week  \\  \hline
+ 		3.2 & Software Design for Algorithm & Bora  & Reflecting the Algorithm to the code lines  & Not Started  & 0 & 4 week\\  \hline
+ 		3.3& Software Design for UI & Mert  & Designing UI for using the system. & Not Started  & 0  & 4 week \\  \hline
+ 		4 & Implementation &   &  &   &   & 4 week \\  \hline
+ 		4.1 & Purchase of other Components & Bora  & USB – TTL cables etc.  & Not Started  & 0 & 2 days  \\  \hline
+ 		4.2 & Test Debugging& Eren  & Validation  & Not Started  & 0  & 4 weeks  \\
+ 		\hline
+ 	
+ 	\end{longtable}
+ 		\caption{Work Plan Table}
+\end{table}
+ 
 
  	\newpage
  	\section{Risk Analysis}
- 		
- 
- 	
-
+ 	 	\centering
+ 	\begin{table}[H]
+ 	\centering
+	\renewcommand{\arraystretch}{0.2}
+	
  		\begin{longtable}{|p{3cm}|p{3cm}|p{1.6cm}|p{2cm}|p{2cm}|}
  			\hline
  			Risk  & Effects on the Project  & Level Of Risk  & Plan B & Plan C  \\
@@ -547,14 +551,40 @@ For text-based encryption, there is a need to create a system that enables secur
  			Disruptions or signal confusion in the communication process between modules.  & Failure to communicate due to confusion may result in the process being completed incorrectly, or not being completed at all.  & Moderate-High Risk& By carrying out the process step by step, the source of the confusion can be found.  & In case of signal interference, distance can be left between the communication modules.  \\	\hline
  			The components we have do not work or cannot function at the time of the process. & It directly causes the project not to work.  & Low Risk  & The problem can be solved by making changes to the system using spare parts.  &   \\
  			\hline
- 			\caption{5x5 Tablo Örneği}
+ 		
+ 		
+ 		
  	
  		\end{longtable}
- 	
- 		
- 
+ 		\caption{Risk Analysis Table}
+ 	\end{table}
+ Negative situations that may be encountered within the project have been identified. Although there are too many possibilities to list here, the basic technical problems that may be encountered are classified according to the risks listed below. The consequences of these problems for the project are shown in the table. Actions to be taken against these risks are included in the table as Plan B and Plan C. 
  	\newpage
  	\section{Cost Analysis}
+ 	\begin{table}[h!]
+ 		\centering
+ 		\begin{tabular}{|l|r|r|r|r|}
+ 			\hline
+ 			\textbf{Products} & \textbf{Quantity} & \textbf{Unit Price} & \textbf{Price} \\
+ 			\hline
+ 			STM32F411CEU6 & 2 & 224.00 TL & 448.00 TL \\ \hline
+ 			ESP8266       & 3 & 61.32 TL & 183.96 TL \\ \hline
+ 			USB - TTL     & 3 & 34.2 TL & 102.6 TL \\ \hline 
+ 			1S Li-Po Battery & 1 & 293.06 TL & 293.06 TL \\ \hline
+ 			Unexpected Expenses & 1 & 350 TL & 350 TL \\ 
+ 			\hline
+ 		\end{tabular}
+ 		\caption{Product Price List}
+ 	\end{table}
+ 	Our ElGamal Encryption System project, which we are preparing to launch, will play an important role in data security, which is one of the most important problems in today's world.
+ 	This developed project provides an advantage in terms of cost, which is an important problem in the marketing phase, with minimum budget and maximum engineering. The engineering principles underlying the project emphasize both user convenience and data security in the project.
+ 	This project, which has a very compact design, will appeal to all users in terms of its portability and ease of use.
+ 	This system, which has become much easier to control thanks to its designed user interface, has greatly expanded its audience and commercial range.
+ 	This system, which can appeal to customers of all ages and statuses, aims to easily find a place in the commercial world with a competitive budget based on this foundation.
+ 	In addition to being customizable according to customer demands, our design is also completely private and open to use on the basis of the defense industry. In this project, where software and engineering are actually marketed, our customer satisfaction target is kept very high.
+ 	Although this project, which is optimistic and prioritizes social welfare, will try to highlight itself with commercial advertisements, our main expectation is to obtain a customer portfolio based on customer satisfaction.
+ 	We hope that it can gain a commercial place thanks to these technical and usable advantages.
+ 	
  	\newpage
  		\section{Conclusions}
 	
@@ -578,13 +608,14 @@ In conclusion, there are a number of noteworthy benefits to our proposed solutio
 	\section{Appendix}
 	\begin{figure}[H]
 	\centering
-	\label{Meeting1}
-	\includegraphics[scale = 0.3]{images/meet3.png}\\[0.5 cm]			
+	\label{Meeting4}
+	\includegraphics[scale = 0.3]{images/meet4_02.01.2024.png}\\[0.5 cm]
+				
 \end{figure}
 	\begin{figure}[H]
 	\centering
-	\label{Meeting2}
-	\includegraphics[scale = 0.3]{images/meet2.png}\\[0.5 cm]			
+	\label{Meeting5}
+	\includegraphics[scale = 0.3]{images/meet4_10.01.2024.png}\\[0.5 cm]			
 \end{figure}
 	\begin{figure}[H]
 	\centering

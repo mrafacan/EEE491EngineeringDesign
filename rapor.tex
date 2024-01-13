@@ -19,6 +19,7 @@
 \usepackage{lipsum}
 \usepackage{blindtext}
 \usepackage{amssymb}
+\usepackage{pgfgantt}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{float}
 \usepackage{nameref}
@@ -142,13 +143,13 @@ For text-based encryption, there is a need to create a system that enables secur
 	\begin{itemize}
 		\item \textbf{ElGamal Encryption}:
 		\begin{itemize}
-			\item ElGamal is a public-key (asymmetric) cryptosystem based on the mathematical properties of modular exponentiation and the difficulty of certain mathematical problems\cite{book}.
+			\item ElGamal is a public-key (asymmetric) cryptosystem based on the mathematical properties of modular exponentiation and the difficulty of certain mathematical problems.\cite{book}  \cite{iceis04}
 			\item It involves key generation, encryption, and decryption processes.
 		\end{itemize}
 		
 		\item \textbf{How It's Currently Being Done}:
 		\begin{itemize}
-			\item \textbf{Key Generation}: Each card generates its own public and private key pair.
+			\item \textbf{Key Generation}: Each card generates its own public and private key pair.  Miller\&Rabbin test algorithm will be used to test whether the selected 32-bit number is a prime number. \cite{article_369778}
 			\item \textbf{Encryption}: Card A encrypts a message using Card B's public key and a random integer number.
 			\item \textbf{Decryption}: Card B decrypts the received message using its private key.
 		\end{itemize}
@@ -157,7 +158,7 @@ For text-based encryption, there is a need to create a system that enables secur
 		\begin{itemize}
 			\item \textbf{Computational Intensity}: ElGamal encryption can be computationally intensive, which might be a limitation for resource-constrained devices.
 			\item \textbf{Key Size}: To ensure security, ElGamal often requires larger key sizes, potentially impacting communication efficiency.
-			\item \textbf{Vulnerability to Quantum Attacks}: ElGamal, like many public-key systems, is vulnerable to attacks leveraging quantum computers.
+			\item \textbf{UDP Protocol}: UDP communication protocol is faster and more functional in real-time use than other communication protocols. \cite{al2018performance}
 		\end{itemize}
 	\end{itemize}
 		
@@ -173,7 +174,7 @@ For text-based encryption, there is a need to create a system that enables secur
 	 \begin{itemize}
 	 	\item \textbf{Focus on Data Security}: Similar to several existing projects, our project shares a fundamental focus on ensuring data security. Encryption and decryption processes aim to safeguard transmitted data from unauthorized access.
 	 	
-	 	\item \textbf{Utilization of ElGamal Algorithm}: Both the referenced article and our project utilize the ElGamal algorithm for encryption purposes, acknowledging its strength in public key cryptography.
+	 	\item \textbf{Utilization of ElGamal Algorithm}: Both the referenced article and our project utilize the ElGamal algorithm for encryption purposes, acknowledging its strength in public key cryptography\cite{9166586}.
 	 \end{itemize}
 		
 
@@ -182,7 +183,7 @@ For text-based encryption, there is a need to create a system that enables secur
 	
 	\section{Requirements Specifications}
 		
-	\subsection{Engineering requirements}
+	\subsection{Engineering Requirements}
 	\begin{enumerate}
 		\item[a.] Shall communicate eachother wireless.
 		\item[b.] Shall communicate users with USB.
@@ -341,30 +342,41 @@ For text-based encryption, there is a need to create a system that enables secur
 	\end{tabular}
 	\caption{Consept Table}
 \end{table}
+We decided on potential solutions for the requirements of our project by brainstorming. We eliminated these potential solutions as the most suitable for our project. With this method, we created a strong and creative plan to deal with project obstacles. 
 
 
 \vskip 10cm
 
 
-\subsection{Level2 Design}
+\subsection{Level 2 Design}
+	\begin{figure}[H]
+	\centering
+	\label{ Design Of The System}
+	\includegraphics[scale = 0.25]{images/diagramofsystem.jpg}\\[0.5 cm]	
+	\caption{Level 2 Design Of The System} 		
+\end{figure}
+Figure 3 shows the Level 2 Design of the System, detailing the encryption and decryption systems' components. Both systems include an ESP8266 module, STM32F401RCT6 microcontroller, and FTDI232 interface.
 	\begin{figure}[H]
 	\centering
 	\label{Level2 Design Of The System}
 	\includegraphics[scale = 0.25]{images/level2design.jpg}\\[0.5 cm]	
-	\caption{Level2 Design Of The System} 		
+	\caption{Level 2 Design Of The System} 		
 \end{figure}
+Figure 4 shows the Level 2 Design of the System, where two clients are interfaced with encryption and decryption systems through a development board, indicating the flow of data via USB TTL and an access point.
 	\begin{figure}[H]
 	\centering
 	\label{Level21 Design Of The System}
 	\includegraphics[scale = 0.25]{images/level2design1.jpg}\\[0.5 cm]	
 	\caption{Level2 Design Of The System} 		
 \end{figure}
+Figure 5 outlines the encryption process in the Level 2 Design of the System, from user input to encrypted message, passing through a 5V DC, USB TTL, and a development board
 	\begin{figure}[H]
 	\centering
 	\label{Level22 Design Of The System}
 	\includegraphics[scale = 0.25]{images/level2design12.jpg}\\[0.5 cm]	
-	\caption{Level2 Design Of The System} 		
+	\caption{Level 2 Design Of The System} 		
 \end{figure}
+Figure 6 illustrates the decryption process in the Level 2 Design, mapping the flow from an encrypted message to decrypted output, via a client, development board, and USB TTL interface.
 \newpage
 \subsection{Test Plans}
 \subsubsection*{Unit Test}
@@ -390,6 +402,7 @@ For text-based encryption, there is a need to create a system that enables secur
 		\item \textbf{Expected Result:} The development board successfully encrypts and decrypts data, matching expected output.
 	\end{itemize}
 \end{itemize}
+
 \subsubsection*{Module Test}
 \begin{itemize}
 	\item \textbf{Client to Development Board Communication Test:}
@@ -398,7 +411,7 @@ For text-based encryption, there is a need to create a system that enables secur
 		\item \textbf{Procedure:} Execute a series of commands from the client to the development board and verify actions are executed as intended.
 		\item \textbf{Expected Result:} Seamless communication and correct action execution.
 	\end{itemize}
-	
+	\newpage
 	\item \textbf{USB TTL to Development Board Interface Test:}
 	\begin{itemize}
 		\item \textbf{Purpose:} To check the interface between the USB TTL module and the development board for data integrity.
@@ -440,8 +453,7 @@ For text-based encryption, there is a need to create a system that enables secur
 	
 	\subsubsection{Activity Diagram}
 	
- The general activity diagram of our project is shown in the Figure 3 and it shows that. First, a public key is generated on the decryption card for encryption and this key is sent to the encryption card. Meanwhile user can enter a message to the user interface and send it to the encryption card. Then, on the encryption card, the user's message is converted into a numeric value and encrypted with the public key of the receiver card and the encrypted message is sent to the decryption card. on the decryption card, the encrypted message is decrypted with the decryption card's own private key and the original message is obtained. Finally decryption card sends message to the user interface and user can display the message.
- 
+Figure 7 and the following activity diagrams illustrate the workflow of our ElGamal encryption-decryption project. Initially, the decryption card generates a public key and sends it to the encryption card, while the user inputs a message via the user interface. This message is then converted into a numeric value on the encryption card, encrypted using the receiver's public key, and forwarded to the decryption card. Subsequently, the decryption card uses its private key to decrypt the message, which is then displayed to the user. This process, validated by system checks and key verifications on both cards, ensures that the communication between User A and User B is executed securely and efficiently.
  	\begin{figure}[H]
  		\centering
  		\label{Uml Diagram Of The System}
@@ -455,6 +467,7 @@ For text-based encryption, there is a need to create a system that enables secur
  	\includegraphics[scale = 0.35]{images/activitydiagramenc.jpg}\\[0.5 cm]	
  	\caption{Activity Diagram Of The Encryption System } 		
  \end{figure}
+The functions you can see in Figure 7 are described with their respective roles below.
 \begin{itemize}
 	\item \textbf{bool SystemCheck():} This function verifies whether there is an issue within the system.
 	\item \textbf{bool CheckPublicKey():} This function awaits public key
@@ -472,6 +485,7 @@ For text-based encryption, there is a need to create a system that enables secur
 	\includegraphics[scale = 0.35]{images/activitydiagramdec.jpg}\\[0.5 cm]	
 	\caption{Activity Diagram Of The Decryption System } 		
 \end{figure}
+The functions you can see in Figure 8  are described with their respective roles below.
 \begin{itemize}
 	\item \textbf{bool SystemCheck():}  This function verifies whether there is an issue within the system.
 	\item \textbf{bool GenerateKey():} This function generates public and private keys.
@@ -482,13 +496,13 @@ For text-based encryption, there is a need to create a system that enables secur
 	\item \textbf {bool IsMessageSent()} This function checks if the message has been sent.
 \end{itemize}
  \newpage
+ \subsubsection{Data Protocol}
  \begin{figure}[H]
  	\centering
  	\label{}
  	\includegraphics[scale = 0.35]{images/datadiagram.png}\\[0.5 cm]	
- 	\caption{Udp Diagram Of The System} 		
+ 	\caption{Data Protocol Of The System} 		
  \end{figure}
-
  \begin{table}[H]	
  	\centering
  	\begin{tabular}{|c|c|}
@@ -503,16 +517,18 @@ For text-based encryption, there is a need to create a system that enables secur
  	\end{tabular}
 	\caption{Start Byte's} 
 \end{table}
+ Figure 10 illustrates the data flow between an encryption system, a UDP server, and a decryption system, along with a detailed view of the data packet's structure. Table 6 lists various data types like public key and encrypted message with corresponding hexadecimal start bytes, which act as identifiers in the protocol.
  	\newpage
  	\section{Work Plan}
 	\begin{table}[H]
 
  		\renewcommand{\arraystretch}{0.2}
  	\centering
- 	\begin{longtable}{|p{1cm}|p{2.75cm}|p{1.6cm}|p{2.5cm}|p{1.25cm}|p{1.5cm}|p{2cm}|}	\hline
+ 	\begin{tabular}{|p{1cm}|p{2.75cm}|p{1.6cm}|p{2.5cm}|p{1.25cm}|p{1.5cm}|p{2cm}|}	\hline
+ 		
  		Task Id & Task Description & Task Owner & Task Responsibility & Task Status & Estimated Cost & Timeline \\
  		\hline
- 		\endfirsthead
+ 	
 		
  		1 & Gathering Information &  &  &  & & \\  \hline
  		1.1 & Literature Research & Everyone & To have knowledge in the field of encryption. & Done &  & \\  \hline
@@ -528,23 +544,31 @@ For text-based encryption, there is a need to create a system that enables secur
  		4.2 & Test Debugging& Eren  & Validation  & Not Started  & 0  & 4 weeks  \\
  		\hline
  	
- 	\end{longtable}
+ 	\end{tabular}
  		\caption{Work Plan Table}
 \end{table}
- 
+	\begin{figure}[H]
+	\centering
+	\label{gann}
+	\includegraphics[scale = 0.2]{gann.png}\\[0.5 cm]
+	\caption{Gann Chart Of The Project}
+\end{figure}
+The work plan table for the ElGamal project outlines a methodical approach, assigning team members precise responsibilities such component selection, literature review, and design stages along with cost estimates and deadlines. Every duty, from preliminary research to software development and testing, is carefully assigned to our group members, guaranteeing that knowledge is used efficiently over the course of the project.
+
+Figure 11 is enhanced by an accompanying Gantt chart, which shows how various tasks are visually mapped across a schedule and emphasizes the order and duration of each action. 
 
  	\newpage
  	\section{Risk Analysis}
- 	 	\centering
+ 
  	\begin{table}[H]
  	\centering
 	\renewcommand{\arraystretch}{0.2}
 	
- 		\begin{longtable}{|p{3cm}|p{3cm}|p{1.6cm}|p{2cm}|p{2cm}|}
+ 		\begin{tabular}{|p{3cm}|p{3cm}|p{1.6cm}|p{2cm}|p{2cm}|}
  			\hline
  			Risk  & Effects on the Project  & Level Of Risk  & Plan B & Plan C  \\
  			\hline
- 		\endfirsthead
+
  	
  			The technical algorithm planned for the project turned out to be an error in practice.  & Privacy, which is the purpose of the project, is at risk.  & High Risk  & Achieving practical solutions by checking software outputs. & Following the outputs through the UML diagram and detecting the error.  \\	\hline
  			Not noticing some "bugs" from the Testing Debugging phase.  & It may cause several problems in terms of user interface or software.  & Low-Moderate Risk  & Checking which line causes this situation. &   \\	\hline
@@ -555,12 +579,12 @@ For text-based encryption, there is a need to create a system that enables secur
  		
  		
  	
- 		\end{longtable}
+ 		\end{tabular}
  		\caption{Risk Analysis Table}
  	\end{table}
- Negative situations that may be encountered within the project have been identified. Although there are too many possibilities to list here, the basic technical problems that may be encountered are classified according to the risks listed below. The consequences of these problems for the project are shown in the table. Actions to be taken against these risks are included in the table as Plan B and Plan C. 
+Potential obstacles that are part of the project scope have been carefully identified and logged. Because there are so many options, only basic technical difficulties are listed here, grouped under particular risk parameters. The effects of these technical difficulties on the project's path are methodically outlined in the table that goes with it. In addition, this table includes tactical solutions, designated as Plans B and C, that are designed as preventative measures against these risks that have been identified.
  	\newpage
- 	\section{Cost Analysis}
+ 	\section{Cost Analysis And Commercialization Plan}
  	\begin{table}[h!]
  		\centering
  		\begin{tabular}{|l|r|r|r|r|}
@@ -576,15 +600,13 @@ For text-based encryption, there is a need to create a system that enables secur
  		\end{tabular}
  		\caption{Product Price List}
  	\end{table}
- 	Our ElGamal Encryption System project, which we are preparing to launch, will play an important role in data security, which is one of the most important problems in today's world.
- 	This developed project provides an advantage in terms of cost, which is an important problem in the marketing phase, with minimum budget and maximum engineering. The engineering principles underlying the project emphasize both user convenience and data security in the project.
- 	This project, which has a very compact design, will appeal to all users in terms of its portability and ease of use.
- 	This system, which has become much easier to control thanks to its designed user interface, has greatly expanded its audience and commercial range.
- 	This system, which can appeal to customers of all ages and statuses, aims to easily find a place in the commercial world with a competitive budget based on this foundation.
- 	In addition to being customizable according to customer demands, our design is also completely private and open to use on the basis of the defense industry. In this project, where software and engineering are actually marketed, our customer satisfaction target is kept very high.
- 	Although this project, which is optimistic and prioritizes social welfare, will try to highlight itself with commercial advertisements, our main expectation is to obtain a customer portfolio based on customer satisfaction.
- 	We hope that it can gain a commercial place thanks to these technical and usable advantages.
+ 	An upcoming project called ElGamal Encryption System is expected to make a substantial contribution toward resolving data security concerns, which are of utmost importance in modern digital environments. Through the prudent use of maximum engineering expertise combined with limited financial resources, this cleverly designed system provides an affordable solution that is especially beneficial during the marketing phase. This project's technical ideas expertly strike a balance between strong data security and user comfort.
  	
+ 	Due to its user-friendly interface and mobility, the system's compact form makes it appealing to a wide range of users. The interface in particular improves system control, which increases the system's market attractiveness and commercial viability. Because of its adaptability, it can be used by a wide range of customers, including those of different ages and professions, which helps it stand out in the cutthroat business world.
+ 	
+ 	Underscoring its versatility, the system's design is also uniquely suited for application in the defense industry and can be customized to meet specific customer needs. The project, which is essentially the result of the confluence of sophisticated software and advanced engineering, places a high value on customer satisfaction.
+ 	
+ 	These technological and practical merits of the system are expected to facilitate its successful integration into the commercial market, even though the project takes an optimistic stance, prioritizes social welfare, and plans to use commercial advertising for visibility. The main objective is to build a customer base based on satisfaction and trust.
  	\newpage
  		\section{Conclusions}
 	
@@ -609,20 +631,23 @@ In conclusion, there are a number of noteworthy benefits to our proposed solutio
 	\begin{figure}[H]
 	\centering
 	\label{Meeting4}
-	\includegraphics[scale = 0.3]{images/meet4_02.01.2024.png}\\[0.5 cm]
+	\includegraphics[scale = 0.25]{images/meet4_02.01.2024.png}\\[0.5 cm]
 				
 \end{figure}
 	\begin{figure}[H]
 	\centering
 	\label{Meeting5}
-	\includegraphics[scale = 0.3]{images/meet4_10.01.2024.png}\\[0.5 cm]			
+	\includegraphics[scale = 0.25]{images/meet4_10.01.2024.png}\\[0.5 cm]			
 \end{figure}
 	\begin{figure}[H]
 	\centering
 	\label{Meeting3}
-	\includegraphics[scale = 0.3]{images/meet1.png}\\[0.5 cm]			
+	\includegraphics[scale = 0.25]{images/meet6_12.01.2024.png}\\[0.5 cm]			
 \end{figure}
-	
-	
+
+
+As a team, we held weekly virtual meetings. We mostly spoke about exploring encryption-related devices and algorithms throughout the sessions. The group actively investigated several facets of encryption methods and devices to ensure a comprehensive understanding and informed decision-making process. These cooperative endeavors played a crucial role in molding the groundwork for our ElGamal encryption initiative.
+
+	In order to ensure a unified process, our team members exchange ideas in meetings and collaborate online on a frequent basis. We also incorporate visual proof into our operations to document and prove our progress.
 
 \end{document}
